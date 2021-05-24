@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
+    <router-link to="/tasks">Tasks</router-link> |
     <router-link to="/auth/login">Login</router-link> |
     <router-link to="/auth/register">Register</router-link> |
     <router-link to="/auth/me">Me</router-link> |

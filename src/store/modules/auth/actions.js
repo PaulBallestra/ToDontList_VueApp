@@ -9,6 +9,7 @@ export const login = ({ commit }, form) => {
             password: form.password,
         }
     ).then((response) => {
+
         console.log(response);
 
         commit('token', response.data.token)
@@ -66,6 +67,30 @@ export const logout = ({ commit, state }) => {
     }).catch((error) => {
         console.log(error)
     });
+
     commit('token', null);
     commit('data', {});
+};
+
+export const me = ({ commit, state }) => {
+
+    const token = state.user.token;
+
+    console.log(token)
+
+    if(!token){
+        return;
+    }
+
+    axios.post('http://127.0.0.1:8000/api/auth/me', {}, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    }).then((response) => {
+        console.log(response);
+        return response.data
+    }).catch((error) => {
+        console.log(error);
+    });
+
 };
