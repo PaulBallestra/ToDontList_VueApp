@@ -19,7 +19,7 @@
             return {};
         },
         computed: {
-            ...mapGetters({'user': 'auth/user'})
+           ...mapGetters({'user': 'auth/user'})
         }
     }
 </script>

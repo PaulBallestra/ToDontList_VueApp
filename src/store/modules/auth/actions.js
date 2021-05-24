@@ -72,7 +72,7 @@ export const logout = ({ commit, state }) => {
     commit('data', {});
 };
 
-export const me = ({ commit, state }) => {
+export const me = ({ state }) => {
 
     const token = state.user.token;
 
@@ -102,7 +102,7 @@ export const createTask = ({ commit, state }, form) => {
     const token = state.user.token;
 
     if (!token) {
-        return;
+        //return; 401 retourné par l'api
     }
 
     axios.post(
@@ -121,4 +121,29 @@ export const createTask = ({ commit, state }, form) => {
         console.log(error)
     });
 
-}
+};
+
+
+export const getTasks = ({ commit, state }) => {
+
+    //Récup du token comme quoi l'user est bien connecté
+    const token = state.user.token;
+
+    if (!token) {
+        return;
+    }
+
+    axios.get(
+        'http://127.0.0.1:8000/api/tasks', {},
+        {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+    ).then((response) => {
+        console.log(response);
+    }).catch((error) => {
+        console.log(error)
+    });
+
+};

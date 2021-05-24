@@ -14,24 +14,31 @@
         <br><br>
         - LISTE DES TACHES -
 
+        
+        {{ tasks }}
+
     </div>
 </template>
 
 <script>
 
-    import { mapActions } from "vuex";
+    import { mapGetters, mapActions } from "vuex";
 
     export default {
         name: "Tasks",
         data() {
             return {
-                form: {}
+                form: {},
+                tasks: []
             };
         },
         methods: {
-
-            ...mapActions({'createTask': 'auth/createTask'})
-
+            ...mapActions({'createTask': 'auth/createTask'}),
+            ...mapActions({'getTasks': 'auth/getTasks'})
+        },
+        computed: {
+            //  ...mapGetters({'tasks': 'auth/tasks'})
+            //JE N'ARRIVE PAS A RECUP LES TASKS JE COMPRENDS PAS POURQUOI :(
         }
     }
 
