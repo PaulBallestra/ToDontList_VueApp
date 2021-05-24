@@ -28,16 +28,15 @@
         name: "Tasks",
         data() {
             return {
-                form: {},
-                tasks: []
+                form: {}
             };
         },
         methods: {
             ...mapActions({'createTask': 'auth/createTask'}),
-            ...mapActions({'getTasks': 'auth/getTasks'})
+            //...mapActions({'getTasks': 'auth/getTasks'})
         },
         computed: {
-            //  ...mapGetters({'tasks': 'auth/tasks'})
+            ...mapGetters({'tasks': 'auth/tasks'})
             //JE N'ARRIVE PAS A RECUP LES TASKS JE COMPRENDS PAS POURQUOI :(
         }
     }
