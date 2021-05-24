@@ -2,7 +2,7 @@
   <div class="register">
     <h1>Register </h1>
 
-    <form @submit.prevent="register">
+    <form @submit.prevent="register(form)">
 
       <label for="name"> Name </label>
       <br>
@@ -24,7 +24,7 @@
 
 <script>
 
-  import axios from 'axios';
+  import { mapActions } from "vuex"
 
   export default {
     name: "Register",
@@ -34,14 +34,9 @@
       };
     },
     methods: {
-      register(){
-        axios.post('http://127.0.0.1:8000/auth/register').then(response => {
-          console.log(response);
-        }).catch((error) => {
-          console.log(error);
-        });
 
-      }
+      ...mapActions({'register': 'auth/register'})
+
     }
   }
 </script>

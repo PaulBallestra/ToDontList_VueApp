@@ -6,6 +6,7 @@ import store from './store'
 
 const cors = require('cors');
 
+const app = createApp(App);
 
-createApp(App).use(store).use(router).mount('#app');
+createApp(App).use(store).use(router).mount('#app')
 

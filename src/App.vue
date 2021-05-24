@@ -4,10 +4,22 @@
     <router-link to="/auth/login">Login</router-link> |
     <router-link to="/auth/register">Register</router-link> |
     <router-link to="/auth/me">Me</router-link> |
-    <router-link to="/auth/logout">Logout</router-link>
+    <a href="#" @click.prevent="logout">Logout</a>
   </div>
   <router-view/>
 </template>
+
+<script>
+
+  import { mapActions } from "vuex"
+
+  export default {
+    methods: {
+      ...mapActions({'logout': 'auth/logout'})
+    }
+  }
+
+</script>
 
 <style>
 #app {
